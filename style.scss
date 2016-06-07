@@ -1,0 +1,147 @@
+/* SCSS */
+
+$grey: #888888;
+$pink: #e91e63;
+$red: #f44336;
+$blue: #2196F3;
+$green: #4caf50;
+$teal: #00fce7;
+$yellow: #FFEB3B;
+$colors : (pink, $pink),
+		 (grey, $grey),
+		 (blue, $blue),
+		 (red, $red),
+		 (teal, $teal),
+		 (yellow, $yellow);
+$lightList: (40, 10),
+			(30, 20),
+			(20, 30),
+			(10, 40);
+
+$darkList: (60, 10),
+		   (70, 20),
+		   (80, 30),
+		   (90, 40);
+
+$minLevel: 10;
+
+$i : 10;
+@each $name,$color in $colors {
+	.bg-#{$name} {
+		background-color: $color;
+        border: 2px solid darken($color, 10);
+        &:hover{
+			@if $name == teal {
+				background-color: darken($color, 30) !important;
+        		border: 2px solid darken($color, 20);
+			}
+			@else if $name == yellow {
+				background-color: $color !important;
+		        border: 2px solid lighten($color, 10) !important;
+				color: #333 !important;
+			}
+			@else{
+				background-color: $color !important;
+			}
+			opacity: 0.8 !important;
+			color: #fff;
+        };
+	}
+	@each $type,$level in $lightList{
+		.bg-#{$name}-#{$type} {
+			$level: $level;
+            background-color: lighten($color, $level);
+            border: 1px solid lighten($color, $level - 10);
+            color: #333;
+	    }
+	}
+	@each $type,$level in $darkList {
+		.bg-#{$name}-#{$type} {
+			background-color: darken($color, $level);
+			border: 1px solid darken($color, $level + 10);
+			color: #fff;
+		}
+	}
+}
+
+@each $name,$color in $colors {
+	.fc-#{$name} {
+		color: $color;
+	}
+}
+
+
+.btn {
+    padding: 5px 8px;
+    font-weight: 700;
+    font-size: 12px;
+	box-shadow: 2px 2px 5px #888;
+	&:hover {
+		opacity: 0.8;
+		cursor: pointer;
+	}
+	&.round {
+		border-radius: 8px;
+	}
+	&.semi {
+		border-radius: 3px;
+	}
+	&.block {
+		border-radius: 0;
+	}
+	&.empty {
+		background-color: transparent;
+		border-radius: 5px;
+	}
+}
+
+/* END SCSS */
+
+/* CSS */
+
+.fc-grey {
+	color: #f8f8f8;
+}
+
+.fc-black {
+	color: #222;
+}
+
+.i {
+	vertical-align: middle !important;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.align-mid {
+	vertical-align: middle;
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+.b {
+	font-weight: bold;
+}
+
+
+
+html * {
+	font-family: cursive;
+}
+
+.buttons .row {
+	border-top : 1px solid #ddd;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.buttons .row button {
+	margin: 10px auto;
+}
